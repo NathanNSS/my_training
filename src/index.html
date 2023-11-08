@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My training</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <section class="app__container">
+        <div class="actions__container">
+            <button class="btn" name="training_create" type="button" title="Criar Treino">Criar Treino</button>
+            <button class="btn"  name="training_print" type="button" title="Imprimir Treino">Imprimir</button>
+        </div>
+        <main class="trainings">
+            <div class="training__container">
+                <span class="training__name">
+                    treino de peito
+                </span>
+                <div class="training__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="not">Nome</th>
+                                <th>Serie</th>
+                                <th>Repetição</th>
+                                <th>CAR/VEL</th>
+                                <th>Descanso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="not">Cross Over</td>
+                                <td>4</td>
+                                <td>10</td>
+                                <td>?</td>
+                                <td>60s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+    <dialog class="training__dialog">
+        <header></header>
+        <div class="modal__body">
+            <p>This modal dialog has a groovy backdrop!</p>
+        </div>
+        <footer>
+            <button class="btn__cancel">Cancelar</button>
+        </footer>
+    </dialog>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
