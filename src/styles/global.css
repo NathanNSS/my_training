@@ -6,6 +6,7 @@
     --colors-white: #ffffff;
     --colors-white-100: #f9f9f9;
     --colors-white-300: #d9d9d9;
+    --colors-zinc-400: #ACACAC;
     --colors-black:#000000;
     --colors-black-800:#303030;
 
@@ -15,10 +16,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+
+  
 }
 
 body{
-    width: 100vw;
+    width: 100%;
     font: 400 1rem 'Roboto', sans-serif;
 }
 

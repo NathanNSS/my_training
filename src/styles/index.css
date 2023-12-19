@@ -1,5 +1,17 @@
 @import url('./global.css');
 
+*,
+.trainings,
+.training__container {
+    /*Sinaliza para o browser para manter as cores de fundo no momento da impressão*/
+    -webkit-print-color-adjust: exact !important;
+    /* Chrome, Safari 6 – 15.3, Edge */
+    color-adjust: exact !important;
+    /* Firefox 48 – 96 */
+    print-color-adjust: exact !important;
+    /* Firefox 97+, Safari 15.4+ */
+}
+
 .app__container {
     width: 100%;
     padding: 32px 120px;
@@ -30,14 +42,37 @@
     }
 }
 
-.trainings {
+.enpty_training{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    background-color: var(--colors-blue-600);
+    height: 20vh;
+    background-color: aliceblue;
+    text-transform: capitalize;
+}
+
+.trainings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    background-color: var(--colors-blue-600, #306aff);
     padding: 18px;
+}
+
+.printable {
+    position: absolute;
+    width: 100vw;/* ??? */    
+    /*height: 100vh; ??? */    
+    top: 0;
+    left: 0;
 }
 
 .training__container {
     display: flex;
+    background-color: var(--colors-blue-600, #306aff);
     align-items: center;
     gap: 18px;
 }
@@ -52,25 +87,169 @@
     rotate: 180deg;
 }
 
+.table__container {
+    width: 100%;
+}
+
+/* Tabela */
+
 .training__table {
     align-self: self-start;
     width: 100%;
+    text-align: center;
+    border-spacing: 0px 6px;
+    font: 700 14px 'Roboto', sans-serif;
+}
 
-    &>table {
-        width: 100%;
-        text-align: center;
-    }
+.table__head {}
+
+.table__head>tr th:first-child {
+    border-radius: 12px 0 0 0;
+    text-align: left;
+}
+
+.table__head>tr th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.table__head>tr th {
+    background-color: var(--colors-blue-1000);
+    color: var(--colors-white);
+    padding: 12px;
+    position: relative;
 
 
 }
 
+/* Creating divide line of table */
+.table__head>tr th+th::before,
+.table__body>tr td+td::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 1px;
+    height: 90%;
+    background-color: var(--colors-zinc-400);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 
 
+.table__body {}
 
+.table__body>tr td {
+    padding: 12px;
+    background-color: var(--colors-white-300);
+    color: var(--colors-black-800);
+    text-transform: capitalize;
+    position: relative;
+}
+
+.table__body>tr td:first-child {
+    border-radius: 8px 0 0 8px;
+    text-align: left;
+}
+
+.table__body>tr td:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.table__actions__container {
+    width: 100%;
+    height: 0px;
+    display: flex;
+    gap: 18px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms linear;
+    overflow: hidden;
+
+    & button {
+        flex: auto;
+        padding: 14px 0;
+        border: none;
+        border-radius: 6px;
+        background-color: #a5f697;
+        color: var(--colors-black-800);
+    }
+}
+
+.table__container:hover .table__actions__container {
+    height: 43px;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Modal */
 .training__dialog {
- 
+    min-width: 450px;
+    margin: auto;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
+
+    &>* {
+        padding: 12px 0;
+    }
+
     &::backdrop {
         background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    >header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal__body {
+        max-width: 60vw;
+        max-height: 60vh;
+        overflow: hidden auto;
+    }
+
+    >footer {
+        display: flex;
+        justify-content: flex-end;
+
+        .btn__cancel {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: crimson;
+            color: white;
+
+            transition: filter 200ms linear;
+
+            &:hover {
+                filter: brightness(80%);
+            }
+        }
+    }
+
+}
+
+
+@media print {
+    .table__actions__container{
+        height: 0px !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    body *:not(.printable, .printable *) {
+        display: none;
+
+    }
+
+    body {
+        background-color: var(--colors-blue-600, #306aff);
+    }
+
+    .training__container {
+        padding: 18px;
     }
 }
